@@ -2,6 +2,7 @@ package com.my.MainCar;
 
 import com.my.ClassOfCar.Car;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -34,11 +35,11 @@ public class MainCar {
      */
     public static Car[] setArray(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the size of the array: ");
+        System.out.print("Enter the size of the array: ");
         var cars = new Car[scanner.nextInt()];
         for (int i = 0; i < cars.length; i++)
         {
-            Car car = setCar(i);
+            Car car = setCar();
             cars[i] = car;
             System.out.println(" ");
         }
@@ -48,15 +49,13 @@ public class MainCar {
 
     /**
      * Метод для створення об'єкту типу Car та встановлення полів для цього об'єкту
-     * @param id айді автомобіля
      * @return об'єкт типу Car
      */
-    public static Car setCar(int id){
+    public static Car setCar(){
         Scanner scanner = new Scanner(System.in);
 
         Car car = new Car();
 
-        car.setId(id);
         System.out.print("Enter the car model: ");
         car.setModel(scanner.nextLine());
 
@@ -64,7 +63,7 @@ public class MainCar {
         car.setYearOfManufacture(scanner.nextInt());
 
         System.out.print("Enter the price of the car ($): ");
-        car.setPrice(scanner.nextInt());
+        car.setPrice(scanner.nextFloat());
 
         car.setRegNumber();
 
@@ -94,11 +93,13 @@ public class MainCar {
      * @param yearsOfOperation рік експлуатації шуканого автомобіля
      */
     public static void displayModelNYears(Car[] cars,String model,int yearsOfOperation){
+        LocalDate current_date = LocalDate.now();
+        int currentYear = current_date.getYear();
         System.out.println("\nCars with the following parameters will be displayed:");
         System.out.println("Model: "+model+"\nYears of Operation: "+yearsOfOperation+"\n");
 
         for (Car car : cars) {
-            if (car.getModel().equals(model) && (2022 - car.getYearOfManufacture()) > yearsOfOperation) {
+            if (car.getModel().equals(model) && (currentYear - car.getYearOfManufacture()) > yearsOfOperation) {
                 System.out.print(car+"\n");
             }
         }

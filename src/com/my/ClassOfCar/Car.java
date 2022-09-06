@@ -5,76 +5,101 @@ package com.my.ClassOfCar;
  * @author Volodymyr Stepaniuk
  */
 public class Car {
-    private int id;
+    private final int id;
+    private static int incrementId;
     private String model;
     private int yearOfManufacture;
-    private int price;
+    private double price;
     private int regNumber;
     /**
      * Конструктор cтворення нового об'єкту
-     * @see Car#Car(int id,String model, int yearOfManufacture, int price, int regNumber)
+     * @see Car#Car(String model, int yearOfManufacture, double price, int regNumber)
      */
-    public Car(){}
+    public Car(){id = ++incrementId;}
 
     /**
      * Конструктор cтворення нового об'єкту з певним заданим значенням
-     * @param id айді автомобіля
      * @param model модель автомобіля
      * @param yearOfManufacture рік випуску автомобіля
      * @param price ціна автомобіля
      * @param regNumber реєстраційний номер автомобіля
      * @see Car#Car()
      */
-    public Car(int id,String model, int yearOfManufacture, int price, int regNumber) {
-        this.id = id;
+    public Car(String model, int yearOfManufacture, double price, int regNumber) {
+        id = ++incrementId;
         this.model = model;
         this.yearOfManufacture = yearOfManufacture;
         this.price = price;
         this.regNumber = regNumber;
     }
 
+    /**
+     * Геттер для поля id
+     * @return id автомобіля
+     */
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    /**
+     * Геттер для поля model
+     * @return model автомобіля
+     */
     public String getModel() {
         return model;
     }
 
+    /**
+     * Сеттер для поля model
+     * @param model автомобіля
+     */
     public void setModel(String model) {
         this.model = model;
     }
 
+    /**
+     * Геттер для поля yearOfManufacture
+     * @return yearOfManufacture автомобіля
+     */
     public int getYearOfManufacture() {
         return yearOfManufacture;
     }
 
+    /**
+     * Сеттер для поля yearOfManufacture
+     * @param yearOfManufacture автомобіля
+     */
+    public void setYearOfManufacture(int yearOfManufacture) {
+        this.yearOfManufacture = yearOfManufacture;
+    }
+    /**
+     * Геттер для поля regNumber
+     * @return regNumber автомобіля
+     */
     public int getRegNumber() {
         return regNumber;
     }
 
-    public void setRegNumber(int regNumber) {
-        this.regNumber = regNumber;
+    /**
+     * Сеттер для поля regNumber
+     */
+    public void setRegNumber() {
+        this.regNumber = hashCode();
     }
-
-    public void setYearOfManufacture(int yearOfManufacture) {
-        this.yearOfManufacture = yearOfManufacture;
-    }
-
-    public int getPrice() {
+    /**
+     * Геттер для поля price
+     * @return price
+     */
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    /**
+     * Сеттер для поля price
+     * @param price автомобіля
+     */
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public void setRegNumber() {
-        this.regNumber = hashCode();
     }
 
     /**
